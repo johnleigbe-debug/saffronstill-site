@@ -365,7 +365,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;color:var(--mute
 <body>
 
 
-<div class="note" id="note">Prototype for review. The basket works, but nothing can be ordered or paid for here.</div>
 
 <div class="annc" id="annc">Free UK delivery over <b>£55</b> · Sealed, brand-new bottles · Dispatched from Cheltenham</div>
 <header class="bar"><div class="wrap bar-in">
@@ -1019,7 +1018,6 @@ function loadLive(){
     LIVE=true;index();renderShelfMeta();restoreBasket();
     if(location.hash==="#thanks"||location.pathname==="/thanks"){B={};}
     paint();renderBasket();route();
-    if(/saffronstill\.com$/.test(location.hostname)){$("note").hidden=true;}else{$("note").textContent="Test build of the new Saffron & Still storefront, connected to the live shop.";}
   });
 }
 function checkout(){
