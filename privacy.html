@@ -558,7 +558,7 @@ var G=window.gsap&&!reduce?window.gsap:null;
 function fade(sel){if(G){G.fromTo(sel,{opacity:.4},{opacity:1,duration:.45,ease:"power1.out",overwrite:true});}}
 
 /* ---------- addresses: real paths on the live site, #tags in previews ---------- */
-var PATHS=/^https?:$/.test(location.protocol)&&/(^|\.)saffronstill\.com$|\.netlify\.app$/.test(location.hostname);
+var PATHS=/^https?:$/.test(location.protocol)&&/(^|\.)saffronstill\.com$|\.netlify\.app$|\.pages\.dev$/.test(location.hostname);
 function LP(p){return PATHS?"/product/"+encodeURIComponent(p.s||("item-"+p.i)):"#p-"+p.i;}
 function go(u){if(PATHS){history.pushState(null,"",u);route();}else{location.hash=u.replace(/^#/,"");}}
 
