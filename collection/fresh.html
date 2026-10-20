@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en-GB">
 <head>
+<meta charset="utf-8">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-FVPEZYW34Z"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FVPEZYW34Z');</script>
@@ -8,7 +9,15 @@
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1639585764479484');fbq('track','PageView');</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1639585764479484&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
-<meta charset="utf-8">
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('DBBU0BJC77U4J2JQ7FJ0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fresh Perfumes UK | Saffron &amp; Still</title>
 <meta name="description" content="Shop fresh perfumes at Saffron &amp; Still: citrus, aquatic and clean everyday scents. 14 in stock, from £11.99, with UK delivery from Cheltenham.">
@@ -784,7 +793,8 @@ $("product").addEventListener("click",function(e){
 
 /* ---------- basket ---------- */
 var B={};
-function fbx(ev,ps,v){try{if(window.fbq){fbq("track",ev,{content_ids:ps.map(function(p){return p.s.slice(0,50);}),content_type:"product",value:+v.toFixed(2),currency:"GBP"});}}catch(e){}}
+function fbx(ev,ps,v){try{if(window.fbq){fbq("track",ev,{content_ids:ps.map(function(p){return p.s.slice(0,50);}),content_type:"product",value:+v.toFixed(2),currency:"GBP"});}}catch(e){}
+try{if(window.ttq){ttq.track(ev,{contents:ps.map(function(p){return {content_id:p.s.slice(0,50),content_type:"product",content_name:p.n+(p.z?" "+p.z:""),price:p.pr,quantity:1};}),value:+v.toFixed(2),currency:"GBP"});}}catch(e){}}
 function add(i,n){i=String(i);var p=D[parseInt(i,10)],max=p.q||9,have=B[i]||0,to=Math.min(max,have+n);if(to===have){return false;}B[i]=to;renderBasket();if(p.t!=="s"){fbx("AddToCart",[p],(to-have)*p.pr);}return true;}
 function renderBasket(){
   var ids=Object.keys(B),count=0,sub=0;
