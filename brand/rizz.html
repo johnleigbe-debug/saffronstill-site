@@ -784,7 +784,8 @@ $("product").addEventListener("click",function(e){
 
 /* ---------- basket ---------- */
 var B={};
-function add(i,n){i=String(i);var p=D[parseInt(i,10)],max=p.q||9,have=B[i]||0,to=Math.min(max,have+n);if(to===have){return false;}B[i]=to;renderBasket();return true;}
+function fbx(ev,ps,v){try{if(window.fbq){fbq("track",ev,{content_ids:ps.map(function(p){return p.s.slice(0,50);}),content_type:"product",value:+v.toFixed(2),currency:"GBP"});}}catch(e){}}
+function add(i,n){i=String(i);var p=D[parseInt(i,10)],max=p.q||9,have=B[i]||0,to=Math.min(max,have+n);if(to===have){return false;}B[i]=to;renderBasket();if(p.t!=="s"){fbx("AddToCart",[p],(to-have)*p.pr);}return true;}
 function renderBasket(){
   var ids=Object.keys(B),count=0,sub=0;
   $("lines").innerHTML=ids.length?ids.map(function(i){var p=D[parseInt(i,10)],n=B[i],ch=i.split("|")[1];count+=n;sub+=n*p.pr;
@@ -810,7 +811,7 @@ $("panel").addEventListener("click",function(e){
   var q=e.target.closest("[data-q]"),r=e.target.closest("[data-rm]");
   if(q){var i=q.dataset.i,p=D[parseInt(i,10)],n=Math.min(p.q||9,(B[i]||0)+(+q.dataset.q));if(n<1){delete B[i];}else{B[i]=n;}renderBasket();}
   if(r){delete B[r.dataset.rm];renderBasket();}
-  if(e.target.id==="pay"){checkout();}
+  if(e.target.id==="pay"){var ks=Object.keys(B),ps=ks.map(function(i){return D[parseInt(i,10)];}),v=ks.reduce(function(t,i){return t+B[i]*D[parseInt(i,10)].pr;},0);fbx("InitiateCheckout",ps,v);checkout();}
   if(e.target.id==="keep"){openBasket(false);}
 });
 document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("[data-add]");if(!a){return;}
@@ -911,6 +912,7 @@ function route(){
   var w=where(),p=w.p;
   if(p){
     renderProduct(p);show("product");window.scrollTo(0,0);fade("#product");
+    if(p.t!=="s"){fbx("ViewContent",[p],p.pr);}
     var smell="";p.d.forEach(function(l){var q=l.match(/^What it smells like:\s*(.*)$/i);if(q){smell=q[1];}});
     var s1=smell?(smell.match(/^(.+?\.)(\s|$)/)||[0,smell])[1]:p.n+" "+p.z+".";var desc=s1+" "+(p.t==="s"?"Coming soon to Saffron & Still.":money(p.pr)+", brand new and unused, with UK delivery from Cheltenham.");
     var ld=p.t==="s"?null:{"@context":"https://schema.org","@type":"Product",name:p.n+(p.z?" – "+p.z:""),description:desc,image:p.im.filter(function(x){return !EMB[x];}).map(function(x){return x.charAt(0)==="/"?"https://saffronstill.com"+x:W+x;}),brand:p.b?{"@type":"Brand",name:p.b}:undefined,offers:{"@type":"Offer",price:p.pr.toFixed(2),priceCurrency:"GBP",availability:"https://schema.org/InStock",itemCondition:"https://schema.org/NewCondition",url:"https://saffronstill.com"+(PATHS?LP(p):"/")}};
