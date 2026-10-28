@@ -997,9 +997,11 @@ function paint(){
   heroLink();
 }
 function loadLive(){
-  var q=function(fields,tok){return jf("/stores/v3/products/query",{query:{filter:{visible:true},paging:{limit:100}},fields:fields},tok);};
+  var all=[];
+  var q=function(fields,tok,cur){var b=cur?{query:{cursorPaging:{limit:100,cursor:cur}},fields:fields}:{query:{filter:{visible:true},cursorPaging:{limit:100}},fields:fields};return jf("/stores/v3/products/query",b,tok);};
+  var page=function(fields,tok,cur,n){return q(fields,tok,cur).then(function(j){all=all.concat(j.products||[]);var nx=j.pagingMetadata&&j.pagingMetadata.hasNext&&j.pagingMetadata.cursors&&j.pagingMetadata.cursors.next;return (nx&&n<10)?page(fields,tok,nx,n+1):{products:all};});};
   return token().then(function(tok){
-    return q(["PLAIN_DESCRIPTION","MEDIA_ITEMS_INFO"],tok).catch(function(){return q(["PLAIN_DESCRIPTION"],tok);});
+    return page(["PLAIN_DESCRIPTION","MEDIA_ITEMS_INFO"],tok,null,1).catch(function(){all=[];return page(["PLAIN_DESCRIPTION"],tok,null,1);});
   }).then(function(j){
     var list=(j.products||[]).map(toP).filter(function(p){return p.t==="s"||!p.out;});
     if(!list.length){throw new Error("no products");}
