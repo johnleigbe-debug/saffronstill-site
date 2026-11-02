@@ -466,8 +466,8 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;color:var(--mute
 </div></section>
 
 <section id="join" class="tight"><div class="wrap news">
-  <div><div class="label">New arrivals list</div><h2>Be first to the rare bottles</h2><p style="color:var(--mute);max-width:52ch">Most of our fragrances are single bottles, so the best ones go quickly. Leave your email and we will tell you when new stock lands. No spam, and you can unsubscribe at any time.</p></div>
-  <div><form data-news novalidate><input id="news-email" type="email" placeholder="Your email address" aria-label="Email address" autocomplete="email"><button class="btn solid" type="submit">Join the list</button></form><div class="msg" role="status"></div></div>
+  <div><div class="label">New arrivals list</div><h2>Be first to the rare bottles</h2><p style="color:var(--mute);max-width:52ch">Most of our fragrances are single bottles, so the best ones go quickly. Join the list for new arrivals and offers, and get <b>5% off your first order</b>. No spam, and you can unsubscribe at any time.</p></div>
+  <div><form data-news novalidate><input id="news-email" type="email" placeholder="Your email address" aria-label="Email address" autocomplete="email"><button class="btn solid" type="submit">Join the list</button><label class="consent" style="flex:1 1 100%;display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--mute);cursor:pointer"><input id="news-consent" type="checkbox" style="flex:0 0 auto;width:18px;height:18px;margin-top:2px;padding:0;border-radius:4px;accent-color:var(--saf,#a8500a)"> <span>Yes, email me new arrivals and offers from Saffron &amp; Still. I can unsubscribe at any time. See our <a href="#privacy">privacy policy</a>.</span></label></form><div class="msg" role="status"></div></div>
 </div></section>
 
 <section id="delivery" class="tight"><div class="wrap facts">
@@ -819,10 +819,11 @@ document.addEventListener("submit",function(e){
   e.preventDefault();
   var v=$("news-email").value.trim(),m=nf.nextElementSibling,btn=nf.querySelector("button");
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){m.textContent="Enter a full email address, like name@example.com.";return;}
+  if(!$("news-consent").checked){m.textContent="Please tick the box to agree to receive our emails.";return;}
   if(!LIVE){m.textContent="On the real site this would add "+v+" to the new arrivals list. Nothing was saved here.";return;}
   btn.disabled=true;m.textContent="Adding you…";
-  token().then(function(tok){return jf("/form-submission-service/v4/submissions",{submission:{formId:"e784b022-3d57-4bea-b709-a6c2bb3024f5",submissions:{email_news:v}}},tok);})
-  .then(function(){btn.disabled=false;nf.reset();m.textContent="You are on the list. We will email you when new bottles land.";})
+  token().then(function(tok){return jf("/form-submission-service/v4/submissions",{submission:{formId:"e784b022-3d57-4bea-b709-a6c2bb3024f5",submissions:{email_news:v,subscribe_news:true}}},tok);})
+  .then(function(){btn.disabled=false;nf.reset();m.innerHTML="You are on the list. Use code <b>JOIN5</b> at checkout for 5% off your first order.";})
   .catch(function(){btn.disabled=false;m.textContent="Sorry, that did not go through. Please try again in a moment.";});
 });
 document.addEventListener("submit",function(e){
