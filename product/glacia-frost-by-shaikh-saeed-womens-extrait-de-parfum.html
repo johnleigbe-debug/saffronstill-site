@@ -468,7 +468,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;color:var(--mute
 </div></section>
 
 <section id="join" class="tight"><div class="wrap news">
-  <div><div class="label">New arrivals list</div><h2>Be first to the rare bottles</h2><p style="color:var(--mute);max-width:52ch">Most of our fragrances are single bottles, so the best ones go quickly. Join the list for new arrivals and offers, and get <b>5% off your first order</b>. No spam, and you can unsubscribe at any time.</p></div>
+  <div><div class="label">New arrivals list</div><h2>Be first to the rare bottles</h2><p style="color:var(--mute);max-width:52ch">Most of our fragrances are single bottles, so the best ones go quickly. Join the list for new arrivals and offers, and get <b>5% off your first order</b> of £27 or more. No spam, and you can unsubscribe at any time.</p></div>
   <div><form data-news novalidate><input id="news-email" type="email" placeholder="Your email address" aria-label="Email address" autocomplete="email"><button class="btn solid" type="submit">Join the list</button><label class="consent" style="flex:1 1 100%;display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--mute);cursor:pointer"><input id="news-consent" type="checkbox" style="flex:0 0 auto;width:18px;height:18px;margin-top:2px;padding:0;border-radius:4px;accent-color:var(--saf,#a8500a)"> <span>Yes, email me new arrivals and offers from Saffron &amp; Still. I can unsubscribe at any time. See our <a href="#privacy">privacy policy</a>.</span></label></form><div class="msg" role="status"></div></div>
 </div></section>
 
@@ -825,7 +825,7 @@ document.addEventListener("submit",function(e){
   if(!LIVE){m.textContent="On the real site this would add "+v+" to the new arrivals list. Nothing was saved here.";return;}
   btn.disabled=true;m.textContent="Adding you…";
   token().then(function(tok){return jf("/form-submission-service/v4/submissions",{submission:{formId:"e784b022-3d57-4bea-b709-a6c2bb3024f5",submissions:{email_news:v,subscribe_news:true}}},tok);})
-  .then(function(){btn.disabled=false;nf.reset();m.innerHTML="You are on the list. Use code <b>JOIN5</b> at checkout for 5% off your first order.";try{if(window.fbq){fbq("track","Lead");}if(window.ttq){ttq.track("CompleteRegistration");}}catch(x){}})
+  .then(function(){btn.disabled=false;nf.reset();m.innerHTML="You are on the list. Use code <b>JOIN5</b> at checkout for 5% off your first order of £27 or more.";try{if(window.fbq){fbq("track","Lead");}if(window.ttq){ttq.track("CompleteRegistration");}}catch(x){}})
   .catch(function(){btn.disabled=false;m.textContent="Sorry, that did not go through. Please try again in a moment.";});
 });
 document.addEventListener("submit",function(e){
@@ -873,10 +873,10 @@ document.addEventListener("submit",function(e){
 
 
 /* ---------- seasonal codes (match the Wix coupons; times are UK) ---------- */
-(function(){var C=[["2026-10-31T00:00:00Z","2026-11-14T00:00:00Z","GIFT5","Christmas gifting","our perfumes (excludes offers)"],["2026-11-21T00:00:00Z","2026-12-02T00:00:00Z","BLACKFRIDAY5","Black Friday"],["2026-12-07T00:00:00Z","2026-12-19T00:00:00Z","XMAS5","Christmas"]];
+(function(){var C=[["2026-10-31T00:00:00Z","2026-11-14T00:00:00Z","GIFT5","Christmas gifting"],["2026-11-21T00:00:00Z","2026-12-02T00:00:00Z","BLACKFRIDAY5","Black Friday"],["2026-12-07T00:00:00Z","2026-12-19T00:00:00Z","XMAS5","Christmas"]];
 var now=Date.now(),a=$("annc");if(!a){return;}
 C.forEach(function(c){if(now>=Date.parse(c[0])&&now<Date.parse(c[1])){var last=new Date(Date.parse(c[1])-1).toLocaleDateString("en-GB",{day:"numeric",month:"long",timeZone:"Europe/London"});
-a.innerHTML=esc(c[3])+": <b>5% off</b> "+(c[4]||"everything")+" with code <b>"+c[2]+"</b> at checkout, until "+esc(last)+" · Free UK delivery over <b>£25</b>";}});})();
+a.innerHTML=esc(c[3])+": <b>5% off</b> orders of £27+ with code <b>"+c[2]+"</b>, until "+esc(last)+" · Free UK delivery over <b>£25</b>";}});})();
 /* ---------- views ---------- */
 var BASE_TITLE="Arabian & Oud Perfumes UK | Saffron & Still",BASE_DESC="Arabian, oud and gourmand perfumes from Afnan, Adyan, Rizz, Volare and more. Sealed, brand new bottles. Free UK delivery over £25, sent from Cheltenham.",INITP=location.pathname;
 function head(title,desc,path,ld){
