@@ -25,7 +25,38 @@ if(window.SSC)window.ssLoad(window.SSC);
 <link rel="canonical" href="https://saffronstill.com/product/dirham-gold-by-ard-al-zaafaran-unisex-eau-de-parfum-100ml">
 <link rel="preconnect" href="https://static.wixstatic.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}/* ---------- header search (predictive) ---------- */
+.hsbtn{display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:16px;cursor:pointer;white-space:nowrap}
+.hsbtn svg{width:18px;height:18px;flex:none}
+.hsbtn:hover,.hsbtn:focus-visible{border-color:var(--saffron)}
+@media(max-width:640px){.hsbtn .t{display:none}.hsbtn{padding:7px 9px}}
+#sx{position:fixed;inset:0;z-index:2147483000;display:none}
+#sx.on{display:block}
+#sx .sxbg{position:absolute;inset:0;background:rgba(24,14,24,.5)}
+#sx .sxp{position:relative;margin:0 auto;max-width:860px;background:#fffaf4;color:#261c30;border-radius:0 0 22px 22px;box-shadow:0 24px 60px rgba(0,0,0,.25);padding:18px clamp(14px,3vw,26px) 16px}
+#sx .sxrow{display:flex;align-items:center;gap:10px;border:2px solid #261c30;border-radius:999px;padding:6px 8px 6px 16px;background:#fff}
+#sx .sxrow:focus-within{border-color:#a8500a}
+#sx .sxrow svg{width:20px;height:20px;flex:none;color:#6b5a72}
+#sx input{flex:1;min-width:0;border:0;outline:none;font-size:18px;padding:8px 0;background:none;color:#261c30}
+#sx .sxx{border:0;background:#f1e8de;color:#261c30;border-radius:999px;padding:8px 14px;font-size:15px;cursor:pointer}
+#sx .sxres{max-height:min(68vh,620px);overflow:auto;margin-top:12px;display:grid;grid-template-columns:190px 1fr;gap:18px}
+@media(max-width:640px){#sx .sxres{grid-template-columns:1fr;max-height:78vh}#sx .sxp{border-radius:0}#sx .sxs{order:2}#sx .sxs button{display:inline-block;width:auto;border:1px solid #e3d6c7;border-radius:999px;margin:0 6px 6px 0;padding:6px 12px;font-size:15px}}
+#sx h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8a6a2f;margin:6px 0 8px;font-weight:700}
+#sx .sxs button{display:block;width:100%;text-align:left;border:0;background:none;padding:7px 8px;border-radius:8px;font-size:16px;color:#261c30;cursor:pointer}
+#sx .sxs button:hover,#sx .sxs button:focus-visible{background:#f4ebe0}
+#sx .sxs b{font-weight:700}
+#sx .sxi{display:flex;gap:12px;align-items:center;padding:8px;border-radius:12px;color:#261c30;text-decoration:none}
+#sx .sxi:hover,#sx .sxi:focus-visible,#sx .sxi.cur{background:#f4ebe0;outline:none}
+#sx .sxt{position:relative;width:54px;height:66px;flex:none;border-radius:8px;overflow:hidden;background:#f1e8de;display:grid;place-items:center;font-family:var(--display);color:#a8500a;font-size:20px}
+#sx .sxt img{width:100%;height:100%;object-fit:cover}
+#sx .sxn{display:block;font-size:16px;line-height:1.25}#sx .sxt .mono{font-size:18px;width:100%;height:100%;display:grid;place-items:center}#sx .sxt .mono[hidden]{display:none}
+#sx .sxm{display:block;font-size:13px;color:#6b5a72;margin-top:2px}
+#sx .sxpr{margin-left:auto;font-weight:700;white-space:nowrap;padding-left:8px}
+#sx .sxo{color:#a33;font-weight:600;font-size:13px}
+#sx .sxnote{font-size:15px;color:#4b3b52;background:#f6eee4;border-radius:10px;padding:10px 12px;margin:2px 0 8px}
+#sx .sxall{display:block;width:100%;margin-top:10px;border:0;border-top:1px solid #eadfd2;background:none;padding:12px 8px 4px;text-align:left;font-size:16px;color:#a8500a;font-weight:600;cursor:pointer}
+#sx mark{background:#f7dfb0;color:inherit;border-radius:3px;padding:0 1px}
+</style>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <style>
@@ -380,7 +411,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;color:var(--mute
 <header class="bar"><div class="wrap bar-in">
   <a class="logo" href="#top">Saffron <i>&amp;</i> Still</a>
   <nav id="mainnav" aria-label="Main"><a href="#perfumes">Shop</a><a href="#moods">Moods</a><a href="#houses">Houses</a><a href="#finder" data-quiz>Scent finder</a><a href="#story">Our story</a><a href="#contact">Contact</a></nav>
-  <div class="bar-right"><button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu"><span class="bars" aria-hidden="true"></span><span class="mtxt">Menu</span></button><button class="saved" id="savedbtn" type="button" aria-label="Saved fragrances">♥ <b id="savedn">0</b></button><button class="basket" id="basket" type="button" aria-haspopup="dialog">Basket <b id="count">0</b></button></div>
+  <div class="bar-right"><button class="hsbtn" id="hsbtn" type="button" aria-label="Search fragrances" aria-haspopup="dialog" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><span class="t">Search</span></button><button class="menubtn" id="menubtn" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Menu"><span class="bars" aria-hidden="true"></span><span class="mtxt">Menu</span></button><button class="saved" id="savedbtn" type="button" aria-label="Saved fragrances">♥ <b id="savedn">0</b></button><button class="basket" id="basket" type="button" aria-haspopup="dialog">Basket <b id="count">0</b></button></div>
 </div></header>
 
 <main id="home">
@@ -645,7 +676,7 @@ function renderGrid(){
   var bits=[];if(mood){bits.push(mood==="saved"?"Saved":moodOf(mood)[1]);}if(brand){bits.push(brand);}if(cur!=="All"){bits.push(cur);}if(query){bits.push('"'+query+'"');}
   $("rcount").innerHTML='<b>'+list.length+'</b> '+(list.length===1?"fragrance":"fragrances")+(bits.length?' · '+esc(bits.join(" · ")):'');
   $("clear").hidden=!(query||brand||mood||cur!=="All");
-  $("grid").innerHTML=list.length?list.map(card).join(""):'<p class="empty">Nothing matches that yet. Try another note or house, or <button class="brandlink" type="button" data-clear>clear the filters</button>.</p>';
+  $("grid").innerHTML=list.length?list.map(card).join(""):sxEmpty();
 }
 function setChip(f){cur=f;$("chips").querySelectorAll(".chip").forEach(function(c){c.setAttribute("aria-pressed",c.textContent===f);});}
 function clearAll(){query="";brand="";mood="";$("q").value="";$("brandsel").value="";setChip("All");renderGrid();}
@@ -674,6 +705,45 @@ window.addEventListener("resize",function(){if(window.innerWidth>640){set(false)
 $("collage").addEventListener("focusin",function(){CHOVER=true;});
 $("collage").addEventListener("focusout",function(){CHOVER=false;});
 $("collage").addEventListener("click",function(e){var b=e.target.closest("#cpause");if(!b){return;}e.preventDefault();CPAUSED=!CPAUSED;b.setAttribute("aria-pressed",CPAUSED);b.textContent=CPAUSED?"Play":"Pause";});
+/* ---------- header search: results as you type, typo-tolerant, closest matches ---------- */
+function sxNorm(s){return String(s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim();}
+function sxLev(a,b){var m=a.length,n=b.length;if(!m){return n;}if(!n){return m;}var pp=null,p=[],c,i,j;for(j=0;j<=n;j++){p[j]=j;}for(i=1;i<=m;i++){c=[i];for(j=1;j<=n;j++){c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));if(pp&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1]){c[j]=Math.min(c[j],pp[j-2]+1);}}pp=p;p=c;}return p[n];}
+function sxWord(t,w){if(w===t){return 1;}if(w.indexOf(t)===0){return t.length>1?.95:.6;}if(t.length>=3&&w.indexOf(t)>-1){return .8;}if(t.length<3||Math.abs(w.length-t.length)>3&&w.length<t.length){return 0;}var d=Math.min(sxLev(t,w),sxLev(t,w.slice(0,t.length)),sxLev(t,w.slice(0,t.length+1)));var r=1-d/Math.max(t.length,4);return r>=.6?r*.78:0;}
+var SXI=null;
+function sxIdx(){if(SXI&&SXI.len===perf.length){return SXI.l;}var l=perf.map(function(p){return {p:p,a:sxNorm(p.n+" "+(p.b||"")).split(" "),b:sxNorm((p.d||[]).join(" ")+" "+(p.f||"")+" "+(p.g||"")+" "+(p.z||"")).split(" ")};});SXI={len:perf.length,l:l};return l;}
+function sxRank(q){var toks=sxNorm(q).split(" ").filter(Boolean);if(!toks.length){return [];}return sxIdx().map(function(e){var tot=0,all=true;toks.forEach(function(t){var best=0;e.a.forEach(function(w){var s=sxWord(t,w);if(s>best){best=s;}});var b2=0;if(best<.95){e.b.forEach(function(w){var s=sxWord(t,w)*.62;if(s>b2){b2=s;}});}var s=Math.max(best,b2);if(s<.49){all=false;}tot+=s;});return {p:e.p,s:tot/toks.length,all:all};}).filter(function(x){return x.s>0;}).sort(function(x,y){return (y.all-x.all)||(y.s-x.s)||((y.p.q>0)-(x.p.q>0));});}
+function sxHi(s,q){var t=sxNorm(q).split(" ").filter(function(x){return x.length>1;});var out=esc(s);t.forEach(function(w){out=out.replace(new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"),"<mark>$1</mark>");});return out;}
+function sxItem(p,q){var th=p.im&&p.im[0]?pic(p,0,120,150,"54px"):"";var sold=p.q===0;return '<a class="sxi open" href="'+LP(p)+'" data-sxgo><span class="sxt">'+(th||esc(initials(p.n)))+'</span><span><span class="sxn">'+sxHi(short(p),q)+'</span><span class="sxm">'+esc(p.b||"")+(p.z?' · '+esc(p.z):'')+(sold?' · <span class="sxo">Sold out</span>':'')+'</span></span><span class="sxpr">'+money(p.pr)+'</span></a>';}
+function sxSugg(q){var n=sxNorm(q),out=[],seen={};if(n.length<2){return ["Oud","Vanilla","Cherry","Leather","Citrus","Rose","Extrait"];}
+ houses().forEach(function(h){var hn=sxNorm(h);var s=0;hn.split(" ").forEach(function(w){n.split(" ").forEach(function(t){s=Math.max(s,sxWord(t,w));});});if(s>=.75&&!seen[h]){seen[h]=1;out.push(h);}});
+ var notes={};perf.forEach(function(p){(p.d||[]).forEach(function(l){var m=/^(Top|Heart|Base):\s*(.+)$/.exec(l);if(m){m[2].split(/,\s*/).forEach(function(x){x=x.trim();if(x){notes[x.toLowerCase()]=x;}});}});});
+ Object.keys(notes).forEach(function(k){var s=0;sxNorm(k).split(" ").forEach(function(w){n.split(" ").forEach(function(t){s=Math.max(s,sxWord(t,w));});});if(s>=.6&&out.length<7&&!seen[k]){seen[k]=1;out.push(notes[k]);}});
+ return out.slice(0,7);}
+function sxRender(){var q=$("sxq").value,box=$("sxres"),n=sxNorm(q);var sg=sxSugg(q);var left='<div class="sxs"><h4>'+(n.length<2?'Popular':'Suggestions')+'</h4>'+(sg.length?sg.map(function(s){return '<button type="button" data-sxq="'+esc(s)+'">'+sxHi(s,q)+'</button>';}).join(""):'<p class="sxm" style="padding:0 8px">Try a house, perfume or note</p>')+'</div>';var right;
+ if(n.length<2){var nw=perf.filter(function(p){return NEW.indexOf(p.s)>-1;}).slice(0,6);right='<div><h4>New on the shelf</h4>'+nw.map(function(p){return sxItem(p,"");}).join("")+'</div>';}
+ else{var r=sxRank(q),ex=r.filter(function(x){return x.all;}),fz=r.filter(function(x){return !x.all&&x.s>=.45;});
+  if(ex.length){right='<div><h4>Perfumes</h4>'+ex.slice(0,7).map(function(x){return sxItem(x.p,q);}).join("")+(ex.length<4?sxAlso(ex):'')+'<button class="sxall" type="button" data-sxall>See all results for “'+esc(q.trim())+'” →</button></div>';}
+  else if(fz.length){right='<div><p class="sxnote">No exact match for “'+esc(q.trim())+'”. Here are the closest matches we have:</p>'+fz.slice(0,7).map(function(x){return sxItem(x.p,q);}).join("")+'</div>';}
+  else{var nw2=perf.filter(function(p){return NEW.indexOf(p.s)>-1;}).slice(0,5);right='<div><p class="sxnote">We don’t stock “'+esc(q.trim())+'” right now. Tell us what you’re looking for on our <a href="#contact" data-sxclose>contact page</a> and we’ll try to find it. Meanwhile, new on the shelf:</p>'+nw2.map(function(p){return sxItem(p,"");}).join("")+'</div>';}}
+ box.innerHTML=left+right;}
+function sxOpen(v){var w=$("sx");if(!w){return;}w.classList.add("on");document.documentElement.style.overflow="hidden";$("hsbtn").setAttribute("aria-expanded","true");if(typeof v==="string"){$("sxq").value=v;}sxRender();setTimeout(function(){$("sxq").focus();$("sxq").select();},20);}
+function sxClose(){var w=$("sx");if(!w||!w.classList.contains("on")){return;}w.classList.remove("on");document.documentElement.style.overflow="";$("hsbtn").setAttribute("aria-expanded","false");}
+(function(){
+ var w=document.createElement("div");w.id="sx";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");w.setAttribute("aria-label","Search fragrances");
+ w.innerHTML='<div class="sxbg" data-sxclose></div><div class="sxp"><div class="sxrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg><input id="sxq" type="search" placeholder="Search a perfume, house or note…" autocomplete="off" aria-label="Search a perfume, house or note" aria-controls="sxres"><button class="sxx" type="button" data-sxclose>Close</button></div><div class="sxres" id="sxres" aria-live="polite"></div></div>';
+ document.body.appendChild(w);var t;
+ $("hsbtn").addEventListener("click",function(){sxOpen();});
+ $("sxq").addEventListener("input",function(){clearTimeout(t);t=setTimeout(sxRender,70);});
+ $("sxq").addEventListener("keydown",function(e){var its=[].slice.call(document.querySelectorAll("#sxres .sxi"));var k=its.findIndex(function(a){return a.classList.contains("cur");});
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();if(k>-1){its[k].classList.remove("cur");}k=e.key==="ArrowDown"?Math.min(its.length-1,k+1):Math.max(-1,k-1);if(k>-1){its[k].classList.add("cur");its[k].scrollIntoView({block:"nearest"});}}
+  else if(e.key==="Enter"){e.preventDefault();if(k>-1){its[k].click();return;}var v=$("sxq").value.trim();if(!v){return;}sxClose();$("hq").value=v;runSearch(v);}
+  else if(e.key==="Escape"){sxClose();$("hsbtn").focus();}});
+ w.addEventListener("click",function(e){var c=e.target.closest("[data-sxclose]");if(c){sxClose();return;}var s=e.target.closest("[data-sxq]");if(s){$("sxq").value=s.getAttribute("data-sxq");sxRender();$("sxq").focus();return;}if(e.target.closest("[data-sxall]")){var v=$("sxq").value.trim();sxClose();$("hq").value=v;runSearch(v);return;}if(e.target.closest("[data-sxgo]")){sxClose();}});
+ document.addEventListener("keydown",function(e){var tg=e.target&&e.target.tagName;if(e.key==="/"&&!/INPUT|TEXTAREA|SELECT/.test(tg)&&!e.target.isContentEditable){e.preventDefault();sxOpen();}});
+})();
+function sxNotes(p){var o={};(p.d||[]).forEach(function(l){var m=/^(Top|Heart|Base):\s*(.+)$/.exec(l);if(m){m[2].split(/,\s*/).forEach(function(x){o[sxNorm(x)]=1;});}});return o;}
+function sxAlso(ex){if(!ex.length){return "";}var top=ex[0].p,tn=sxNotes(top),inEx={};ex.forEach(function(x){inEx[x.p.s]=1;});var c=perf.filter(function(p){return !inEx[p.s]&&p.q!==0&&p.g&&p.g===top.g;}).map(function(p){var n=sxNotes(p),k=0;Object.keys(n).forEach(function(x){if(tn[x]){k++;}});return {p:p,k:k};}).filter(function(x){return x.k>0;}).sort(function(a,b){return b.k-a.k;}).slice(0,3);return c.length?'<h4 style="margin-top:14px">Similar scents</h4>'+c.map(function(x){return sxItem(x.p,"");}).join(""):"";}
+function sxEmpty(){var r=query?sxRank(query).filter(function(x){return x.s>=.3;}).slice(0,8).map(function(x){return x.p;}):[];return '<p class="empty" style="grid-column:1/-1">'+(query?'Nothing exactly matches “'+esc(query)+'”'+(r.length?'. Here are the closest matches we have, or ':'. Try another note or house, or '):'Nothing matches that yet. Try another note or house, or ')+'<button class="brandlink" type="button" data-clear>clear the filters</button>.</p>'+r.map(card).join("");}
 $("hsearch").addEventListener("submit",function(e){e.preventDefault();runSearch($("hq").value.trim());});
 $("savedbtn").addEventListener("click",function(){showMood("saved");});
 document.addEventListener("click",function(e){
