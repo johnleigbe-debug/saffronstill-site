@@ -724,7 +724,7 @@ function sxRender(){var q=$("sxq").value,box=$("sxres"),n=sxNorm(q);var sg=sxSug
   else if(fz.length){right='<div><p class="sxnote">No exact match for “'+esc(q.trim())+'”. Here are the closest matches we have:</p>'+fz.slice(0,7).map(function(x){return sxItem(x.p,q);}).join("")+'</div>';}
   else{var nw2=perf.filter(function(p){return NEW.indexOf(p.s)>-1;}).slice(0,5);right='<div><p class="sxnote">We don’t stock “'+esc(q.trim())+'” right now. Tell us what you’re looking for on our <a href="#contact" data-sxclose>contact page</a> and we’ll try to find it. Meanwhile, new on the shelf:</p>'+nw2.map(function(p){return sxItem(p,"");}).join("")+'</div>';}}
  box.innerHTML=left+right;}
-function sxOpen(v){var w=$("sx");if(!w){return;}w.classList.add("on");document.documentElement.style.overflow="hidden";$("hsbtn").setAttribute("aria-expanded","true");if(typeof v==="string"){$("sxq").value=v;}sxRender();setTimeout(function(){$("sxq").focus();$("sxq").select();},20);}
+function sxOpen(v,k){var w=$("sx");if(!w){return;}w.classList.add("on");document.documentElement.style.overflow="hidden";$("hsbtn").setAttribute("aria-expanded","true");if(typeof v==="string"){$("sxq").value=v;}sxRender();if(k){var q=$("sxq");q.focus();var n=q.value.length;try{q.setSelectionRange(n,n);}catch(_){}}else{setTimeout(function(){$("sxq").focus();$("sxq").select();},20);}}
 function sxClose(){var w=$("sx");if(!w||!w.classList.contains("on")){return;}w.classList.remove("on");document.documentElement.style.overflow="";$("hsbtn").setAttribute("aria-expanded","false");}
 (function(){
  var w=document.createElement("div");w.id="sx";w.setAttribute("role","dialog");w.setAttribute("aria-modal","true");w.setAttribute("aria-label","Search fragrances");
@@ -743,6 +743,7 @@ function sxNotes(p){var o={};(p.d||[]).forEach(function(l){var m=/^(Top|Heart|Ba
 function sxAlso(ex){if(!ex.length){return "";}var top=ex[0].p,tn=sxNotes(top),inEx={};ex.forEach(function(x){inEx[x.p.s]=1;});var c=perf.filter(function(p){return !inEx[p.s]&&p.q!==0&&p.g&&p.g===top.g;}).map(function(p){var n=sxNotes(p),k=0;Object.keys(n).forEach(function(x){if(tn[x]){k++;}});return {p:p,k:k};}).filter(function(x){return x.k>0;}).sort(function(a,b){return b.k-a.k;}).slice(0,3);return c.length?'<h4 style="margin-top:14px">Similar scents</h4>'+c.map(function(x){return sxItem(x.p,"");}).join(""):"";}
 function sxEmpty(){var r=query?sxRank(query).filter(function(x){return x.s>=.3;}).slice(0,8).map(function(x){return x.p;}):[];return '<p class="empty" style="grid-column:1/-1">'+(query?'Nothing exactly matches “'+esc(query)+'”'+(r.length?'. Here are the closest matches we have, or ':'. Try another note or house, or '):'Nothing matches that yet. Try another note or house, or ')+'<button class="brandlink" type="button" data-clear>clear the filters</button>.</p>'+r.map(card).join("");}
 $("hsearch").addEventListener("submit",function(e){e.preventDefault();runSearch($("hq").value.trim());});
+$("hq").addEventListener("input",function(){var v=this.value;if(v.trim()){sxOpen(v,1);this.value="";}});
 $("savedbtn").addEventListener("click",function(){showMood("saved");});
 document.addEventListener("click",function(e){
   var t=e.target.closest?e.target:null;if(!t){return;}
