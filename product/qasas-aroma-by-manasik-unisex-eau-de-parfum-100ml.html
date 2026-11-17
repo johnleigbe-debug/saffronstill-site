@@ -524,7 +524,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;color:var(--mute
 </aside>
 
 <footer><div class="wrap">
-  <div class="links"><a href="#returns">Delivery and returns</a><a href="#contact">Contact us</a><a href="#terms">Terms and conditions</a><a href="#privacy">Privacy policy</a><button type="button" class="cklink" onclick="ssCookie()">Cookie settings</button></div>
+  <div class="links"><a href="#returns">Delivery and returns</a><a href="/guides">Perfume guides</a><a href="#contact">Contact us</a><a href="#terms">Terms and conditions</a><a href="#privacy">Privacy policy</a><button type="button" class="cklink" onclick="ssCookie()">Cookie settings</button></div>
   <div class="foot">
     <div>Saffron &amp; Still · Fragrances · Based in Cheltenham, UK<br>© 2026 Saffron &amp; Still.</div>
     <div><a href="https://www.instagram.com/saffronstill" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@saffronstill" target="_blank" rel="noopener">TikTok</a></div>
@@ -533,7 +533,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;color:var(--mute
 </div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<div id="ssr" class="wrap"><nav aria-label="Shop"><a href="/">Home</a> · <a href="/collection/oud">Oud lovers</a> · <a href="/collection/evening">Evening &amp; date night</a> · <a href="/collection/sweet">Sweet tooth</a> · <a href="/collection/fresh">Fresh &amp; daytime</a> · <a href="/collection/floral">Florals</a> · <a href="/collection/under30">Under £30</a> · <a href="/contact">Contact</a></nav><p><a href="/">Home</a> › <a href="/brand/manasik">Manasik</a></p><h1>Qasas Aroma by Manasik</h1><p>Unisex Eau de Parfum 100ml</p><p><strong>£21.99</strong> · In stock · Brand new, unused</p><img src="https://static.wixstatic.com/media/774748_f5fd0df56345454f861447591ffa9dd3~mv2.jpg" alt="Qasas Aroma by Manasik – Unisex Eau de Parfum 100ml" width="600" height="720"><p>By <a href="/brand/manasik">Manasik</a></p><p>Scent family: Oriental Woody Spicy</p><p>Key notes</p><p>Top: Oud, cinnamon, cloves, fruity spices</p><p>Heart: Jasmine, sandalwood, vetiver</p><p>Base: Musk, amber</p><p>What it smells like: It opens warm with oud, cinnamon, clove and fruity spices. A heart of jasmine, sandalwood and vetiver settles into a rich base of musk and amber.</p><p>Similar scent style: A warm, spicy oud-and-woods oriental with a soft musky amber finish.</p><p>Standard UK delivery £3.99, free over £25. Dispatched from Cheltenham in 2 to 4 business days. 14-day returns on unopened items.</p><h2>More from Manasik</h2><ul><li><a href="/product/qasas-blush-by-manasik-womens-eau-de-parfum-100ml">Qasas Blush by Manasik</a> Women&#x27;s Eau de Parfum 100ml – £9.99</li></ul></div><script>(function(){var x=document.getElementById("ssr");if(x){x.remove();}})();</script>
+<div id="ssr" class="wrap"><nav aria-label="Shop"><a href="/">Home</a> · <a href="/collection/oud">Oud lovers</a> · <a href="/collection/evening">Evening &amp; date night</a> · <a href="/collection/sweet">Sweet tooth</a> · <a href="/collection/fresh">Fresh &amp; daytime</a> · <a href="/collection/floral">Florals</a> · <a href="/collection/under30">Under £30</a> · <a href="/guides">Perfume guides</a> · <a href="/cheltenham-perfume-shop">Cheltenham perfume shop</a> · <a href="/contact">Contact</a></nav><p><a href="/">Home</a> › <a href="/brand/manasik">Manasik</a></p><h1>Qasas Aroma by Manasik</h1><p>Unisex Eau de Parfum 100ml</p><p><strong>£21.99</strong> · In stock · Brand new, unused</p><img src="https://static.wixstatic.com/media/774748_f5fd0df56345454f861447591ffa9dd3~mv2.jpg" alt="Qasas Aroma by Manasik – Unisex Eau de Parfum 100ml" width="600" height="720"><p>By <a href="/brand/manasik">Manasik</a></p><p>Scent family: Oriental Woody Spicy</p><p>Key notes</p><p>Top: Oud, cinnamon, cloves, fruity spices</p><p>Heart: Jasmine, sandalwood, vetiver</p><p>Base: Musk, amber</p><p>What it smells like: It opens warm with oud, cinnamon, clove and fruity spices. A heart of jasmine, sandalwood and vetiver settles into a rich base of musk and amber.</p><p>Similar scent style: A warm, spicy oud-and-woods oriental with a soft musky amber finish.</p><p>Standard UK delivery £3.99, free over £25. Dispatched from Cheltenham in 2 to 4 business days. 14-day returns on unopened items.</p><h2>More from Manasik</h2><ul><li><a href="/product/qasas-blush-by-manasik-womens-eau-de-parfum-100ml">Qasas Blush by Manasik</a> Women&#x27;s Eau de Parfum 100ml – £9.99</li></ul></div><script>(function(){var x=document.getElementById("ssr");if(x){x.remove();}})();</script>
 <script>
 (function(){
 var W="https://static.wixstatic.com/media/";
@@ -1006,7 +1006,7 @@ document.addEventListener("click",function(e){
   if(h.charAt(0)==="#"){var n=h.slice(1);e.preventDefault();
     if(PAGES[n]){go("/"+n);}else{history.pushState(null,"","/"+(n&&n!=="top"?"#"+n:""));route();if(!n||n==="top"){window.scrollTo(0,0);}}
     return;}
-  if(h.charAt(0)==="/"&&h.charAt(1)!=="/"){e.preventDefault();go(h);}
+  if(h.charAt(0)==="/"&&h.charAt(1)!=="/"&&!/^\/(guides|cheltenham-perfume-shop)(\/|$)/.test(h)){e.preventDefault();go(h);}
 });
 route();
 if(G&&$("product").hidden){G.from(".hero h1,.hero p,.cta,.hero-pic",{y:10,opacity:.4,duration:.7,stagger:.08,ease:"power1.out"});}
