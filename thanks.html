@@ -522,7 +522,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 48px;color:var(--mute
 </aside>
 
 <footer><div class="wrap">
-  <div class="links"><a href="#returns">Delivery and returns</a><a href="/guides">Perfume guides</a><a href="#contact">Contact us</a><a href="#terms">Terms and conditions</a><a href="#privacy">Privacy policy</a><button type="button" class="cklink" onclick="ssCookie()">Cookie settings</button></div>
+  <div class="links"><a href="#returns">Delivery and returns</a><a href="/guides">Perfume guides</a><a href="/wholesale">Wholesale</a><a href="#contact">Contact us</a><a href="#terms">Terms and conditions</a><a href="#privacy">Privacy policy</a><button type="button" class="cklink" onclick="ssCookie()">Cookie settings</button></div>
   <div class="foot">
     <div>Saffron &amp; Still · Fragrances · Based in Cheltenham, UK<br>© 2026 Saffron &amp; Still.</div>
     <div><a href="https://www.instagram.com/saffronstill" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@saffronstill" target="_blank" rel="noopener">TikTok</a></div>
@@ -1004,7 +1004,7 @@ document.addEventListener("click",function(e){
   if(h.charAt(0)==="#"){var n=h.slice(1);e.preventDefault();
     if(PAGES[n]){go("/"+n);}else{history.pushState(null,"","/"+(n&&n!=="top"?"#"+n:""));route();if(!n||n==="top"){window.scrollTo(0,0);}}
     return;}
-  if(h.charAt(0)==="/"&&h.charAt(1)!=="/"&&!/^\/(guides|cheltenham-perfume-shop)(\/|$)/.test(h)){e.preventDefault();go(h);}
+  if(h.charAt(0)==="/"&&h.charAt(1)!=="/"&&!/^\/(guides|cheltenham-perfume-shop|wholesale)(\/|$)/.test(h)){e.preventDefault();go(h);}
 });
 route();
 if(G&&$("product").hidden){G.from(".hero h1,.hero p,.cta,.hero-pic",{y:10,opacity:.4,duration:.7,stagger:.08,ease:"power1.out"});}
