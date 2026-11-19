@@ -56,7 +56,7 @@ if(window.SSC)window.ssLoad(window.SSC);
 #sx .sxnote{font-size:15px;color:#4b3b52;background:#f6eee4;border-radius:10px;padding:10px 12px;margin:2px 0 8px}
 #sx .sxall{display:block;width:100%;margin-top:10px;border:0;border-top:1px solid #eadfd2;background:none;padding:12px 8px 4px;text-align:left;font-size:16px;color:#a8500a;font-weight:600;cursor:pointer}
 #sx mark{background:#f7dfb0;color:inherit;border-radius:3px;padding:0 1px}
-.collintro{max-width:820px;margin:-6px 0 22px;font-size:17px;line-height:1.6}.collintro p{margin:0 0 10px}.collintro a{color:var(--saffron)}.collfaq{margin-top:12px;border-top:1px solid var(--line)}.collfaq details{border-bottom:1px solid var(--line);padding:10px 0}.collfaq summary{cursor:pointer;font-weight:600}.collfaq p{margin:8px 0 2px;color:var(--mute)}</style>
+.collintro{max-width:820px;margin:-6px 0 22px;font-size:17px;line-height:1.6}.collintro p{margin:0 0 10px}.collintro a{color:var(--saffron)}.collfaq{margin-top:12px;border-top:1px solid var(--line)}.collfaq details{border-bottom:1px solid var(--line);padding:10px 0}.collfaq summary{cursor:pointer;font-weight:600}.collfaq p{margin:8px 0 2px;color:var(--mute)}.sc{margin-top:28px;padding:22px;border:1px solid var(--line);background:var(--petal);border-radius:4px}.sc h2{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 4px}.sc-sub,.sc-note,.sc-none,.sc-n{color:var(--mute);margin:0 0 12px}.sc-note{font-size:14px;margin:8px 0 0}.sc-bar{display:grid;grid-template-columns:110px 1fr 34px;align-items:center;gap:10px;margin:6px 0}.sc-bar i{height:8px;background:var(--line);border-radius:4px;overflow:hidden}.sc-bar b{display:block;height:100%;background:var(--saffron)}.sc-bar em{font-style:normal;font-weight:600}.sc-form{margin-top:16px;border-top:1px solid var(--line);padding-top:14px}.sc-form fieldset{border:0;margin:0 0 12px;padding:0}.sc-form legend{font-weight:600;margin-bottom:6px}.sc-pick{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.sc-pick>span{font-size:13px;color:var(--mute)}.sc-pick label{cursor:pointer}.sc-pick input{position:absolute;opacity:0;width:1px;height:1px}.sc-pick b{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;background:var(--paper)}.sc-pick input:checked+b{background:var(--ink);color:var(--paper);border-color:var(--ink)}.sc-pick input:focus-visible+b{outline:2px solid var(--saffron);outline-offset:2px}.sc-msg{min-height:1.2em;margin:10px 0 0;font-weight:600}</style>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <style>
@@ -806,6 +806,27 @@ heroLink();
 
 /* ---------- product page ---------- */
 var pq=1;
+var SC_Q=[["longevity","Longevity","Gone fast","Lasts all day"],["projection","Projection","Close to skin","Fills a room"],["sweetness","Sweetness","Fresh","Sweet"],["compliments","Compliments","None yet","Lots"]];
+function scKey(p){return slug(p.s||p.n).slice(0,120);}
+function scPaint(d){var el=document.getElementById("sc-res");if(!el){return;}
+  if(!d||!d.n){el.innerHTML='<p class="sc-none">No scores yet. Be the first to rate it.</p>';return;}
+  el.innerHTML='<p class="sc-n">'+d.n+(d.n===1?' score':' scores')+' so far</p>'+SC_Q.map(function(q){var v=d.avg[q[0]]||0;
+    return '<div class="sc-bar"><span>'+q[1]+'</span><i><b style="width:'+(v*20)+'%"></b></i><em>'+v.toFixed(1)+'</em></div>';}).join("");}
+function scLoad(k){fetch("/api/scorecard?p="+encodeURIComponent(k)).then(function(r){return r.ok?r.json():null;}).then(scPaint).catch(function(){scPaint(null);});}
+function scoreCard(p){var info=document.querySelector("#product .info");if(!info){return;}var k=scKey(p);
+  info.insertAdjacentHTML("beforeend",'<section class="sc" id="sc"><h2>Scent scorecard</h2><p class="sc-sub">Tried it? Score it from 1 to 5. Every score is shown, good or bad.</p><div id="sc-res"><p class="sc-none">Loading scores…</p></div>'+
+  '<form class="sc-form" data-sc="'+esc(k)+'" novalidate>'+SC_Q.map(function(q){return '<fieldset><legend>'+q[1]+'</legend><div class="sc-pick"><span>'+q[2]+'</span>'+[1,2,3,4,5].map(function(n){
+    return '<label><input type="radio" name="'+q[0]+'" value="'+n+'"><b>'+n+'</b></label>';}).join("")+'<span>'+q[3]+'</span></div></fieldset>';}).join("")+
+  '<button class="btn solid" type="submit">Send my score</button><p class="sc-msg" role="status"></p><p class="sc-note">One score per perfume per day. We do not store your name or email.</p></form></section>');
+  scLoad(k);}
+document.addEventListener("submit",function(e){var f=e.target;if(!f.matches||!f.matches("form.sc-form")){return;}e.preventDefault();
+  var body={p:f.getAttribute("data-sc")},miss=[],msg=f.querySelector(".sc-msg");
+  SC_Q.forEach(function(q){var c=f.querySelector('input[name="'+q[0]+'"]:checked');if(c){body[q[0]]=+c.value;}else{miss.push(q[1]);}});
+  if(miss.length){msg.textContent="Please score: "+miss.join(", ")+".";return;}
+  var b=f.querySelector("button");b.disabled=true;msg.textContent="Sending…";
+  fetch("/api/scorecard",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json().then(function(d){return [r.ok,d];});})
+  .then(function(x){if(x[0]){scPaint(x[1]);msg.textContent="Thank you! Your score has been added.";f.querySelectorAll("fieldset").forEach(function(s){s.disabled=true;});}else{msg.textContent=x[1].error||"Sorry, that did not send.";b.disabled=false;}})
+  .catch(function(){msg.textContent="Sorry, that did not send. Please try again.";b.disabled=false;});});
 function renderProduct(p){
   pq=1;
   var notes="",desc="";
@@ -834,7 +855,7 @@ function renderProduct(p){
   if(!sim.length&&p.g){sim=perf.filter(function(x){return x.g===p.g&&x!==p&&house.indexOf(x)<0;}).slice(0,4);}
   if(sim.length){$("product").insertAdjacentHTML("beforeend",'<div class="more"><h2>If you like this, try</h2><div class="grid">'+sim.map(card).join("")+'</div></div>');}
   if(house.length){$("product").insertAdjacentHTML("beforeend",'<div class="more"><h2>More from '+esc(p.b)+'</h2><div class="grid">'+house.map(card).join("")+'</div></div>');}
-  if(p.t!=="s"){remember(p);}
+  if(p.t!=="s"){remember(p);scoreCard(p);}
   $("product").dataset.i=p.i;
 }
 $("product").addEventListener("click",function(e){
