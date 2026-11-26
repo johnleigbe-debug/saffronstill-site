@@ -1,3 +1,6 @@
 /media/video/*
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=86400
+
+/wholesale
+  Cache-Control: no-cache, must-revalidate
